@@ -1,4 +1,4 @@
-
+import java.io.*;
 import java.util.List;
 import java.util.Locale;
 
@@ -32,9 +32,9 @@ public class TailLauncher {
     private Integer stringNumber = null;
 
     @Option(name = "-o", metaVar = "oFile", usage = "Sets the output file")
-    private Boolean outputFile = null;
+    private String outputFile = null;
 
-    @Argument(multiValued = true, metaVar = "IFiles", usage = "Input files name")
+    @Argument(multiValued = true, metaVar = "IFiles", usage = "Input file names")
     private List<String> inputFiles = null;
 
     public static void main(String[] args) {
@@ -56,14 +56,24 @@ public class TailLauncher {
             return;
         }
 
+        Tail tail = new Tail(characterNumber, stringNumber);
 
-
-        /*Recoder recoder = new Recoder(inputEncoding, outputEncoding);
         try {
-            int result = recoder.recode(inputFileName, outputFileName);
-            System.out.println("Total of " + result + " symbols recoded");
+            String outputText = "";
+            if (inputFiles != null) {
+                for (String inputFileName : inputFiles) {
+                    outputText = outputText + "File: " + inputFileName + "\n" + tail.fromFile(inputFileName) + "\n\n";
+                }
+            } else {
+                outputText = tail.extractTail(System.in);
+            }
+            if (outputFile != null) {
+                Tail.toFile(outputText, outputFile);
+            } else {
+                Tail.out(outputText, System.out);
+            }
         } catch (IOException e) {
             System.err.println(e.getMessage());
-        }*/
+        }
     }
 }
