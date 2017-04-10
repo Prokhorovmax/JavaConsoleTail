@@ -62,7 +62,7 @@ public class TailLauncher {
             String outputText = "";
             if (inputFiles != null) {
                 for (String inputFileName : inputFiles) {
-                    outputText = outputText + "File: " + inputFileName + "\n" + tail.fromFile(inputFileName) + "\n\n";
+                    outputText = outputText.concat("File: ").concat(inputFileName).concat("\n").concat(tail.fromFile(inputFileName)).concat("\n\n");
                 }
             } else {
                 outputText = tail.extractTail(System.in);

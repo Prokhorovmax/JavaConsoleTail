@@ -36,10 +36,11 @@ public class Tail {
                         result.addAll(seq1);
                         break;
                     }
-                    seq2.clear();
-                    seq2.addAll(seq1);
-                    seq1.clear();
                 }
+                seq2.clear();
+                seq2.addAll(seq1);
+                seq1.clear();
+
             }
         }
         String string = "";
@@ -48,7 +49,7 @@ public class Tail {
                 string = string + (char) e;
             }
         } else throw new IOException("No input stream found");
-        return string;
+        return string.trim();
     }
 
     private String extractStrings(InputStream in) throws IOException {
@@ -69,10 +70,11 @@ public class Tail {
                         result.addAll(lines1);
                         break;
                     }
-                    lines2.clear();
-                    lines2.addAll(lines1);
-                    lines1.clear();
                 }
+                lines2.clear();
+                lines2.addAll(lines1);
+                lines1.clear();
+
             }
         }
         String string = "";
@@ -81,7 +83,7 @@ public class Tail {
                 string = string + e + "\n";
             }
         } else throw new IOException("No input stream found");
-        return string;
+        return string.trim();
     }
 
     public String extractTail(InputStream in) throws IOException {
