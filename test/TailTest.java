@@ -56,16 +56,6 @@ public class TailTest {
             "конкретного компьютера или системы. Java также\n" +
             "включает богатейший набор библиотек для\n" +
             "разработки.";
-    private final String result2 = "момент следует считать язык Java. Java в широком\n" +
-            "смысле -- не только язык, но и платформа для\n" +
-            "выполнения программ под самыми разными\n" +
-            "операционными системами и на разной аппаратуре.\n" +
-            "Такая универсальность обеспечивается наличием\n" +
-            "виртуальной машины Java -- системной программы,\n" +
-            "интерпретирующей Java байт-код в машинные коды\n" +
-            "конкретного компьютера или системы. Java также\n" +
-            "включает богатейший набор библиотек для\n" +
-            "разработки.";
 
 
     @org.junit.Test
@@ -74,7 +64,7 @@ public class TailTest {
         assertEquals("???", tail1.extractTail(new ByteArrayInputStream(text2.getBytes(StandardCharsets.UTF_8))));
         assertEquals("азработки.", tail1.extractTail(new ByteArrayInputStream(text3.getBytes(StandardCharsets.UTF_8))));
         assertEquals(result1, tail2.extractTail(new ByteArrayInputStream(text3.getBytes(StandardCharsets.UTF_8))));
-        assertEquals(result2, tail3.extractTail(new ByteArrayInputStream(text3.getBytes(StandardCharsets.UTF_8))));
+        assertEquals(result1, tail3.extractTail(new ByteArrayInputStream(text3.getBytes(StandardCharsets.UTF_8))));
     }
 
     @org.junit.Test

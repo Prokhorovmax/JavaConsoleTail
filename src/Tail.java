@@ -19,14 +19,14 @@ public class Tail {
     }
 
     private String extractCharacters(InputStream in) throws IOException {
-        List<Integer> seq1 = new ArrayList<>();
-        List<Integer> seq2 = new ArrayList<>();
-        List<Integer> result = new ArrayList<>();
+        List<Character> seq1 = new ArrayList<>();
+        List<Character> seq2 = new ArrayList<>();
+        List<Character> result = new ArrayList<>();
         try (InputStreamReader reader = new InputStreamReader(in)) {
             int ch = reader.read();
             while (ch != -1) {
                 for (int i = 0; i < charNum; i++) {
-                    seq1.add(ch);
+                    seq1.add((char) ch);
                     ch = reader.read();
                     if (ch == -1) {
                         if (!seq2.isEmpty()) {
@@ -37,10 +37,11 @@ public class Tail {
                         break;
                     }
                 }
-                seq2.clear();
-                seq2.addAll(seq1);
+                List<Character> temp = seq2;
+                seq2 = seq1;
+                seq1 = temp;
                 seq1.clear();
-
+                temp.clear();
             }
         }
         String string = "";
@@ -71,10 +72,11 @@ public class Tail {
                         break;
                     }
                 }
-                lines2.clear();
-                lines2.addAll(lines1);
+                List<String> temp = lines2;
+                lines2 = lines1;
+                lines1 = temp;
                 lines1.clear();
-
+                temp.clear();
             }
         }
         String string = "";
@@ -101,19 +103,6 @@ public class Tail {
             } else {
                 return extractStrings(inputStream);
             }
-        }
-    }
-
-    public static void out(String string, OutputStream out) throws IOException {
-        try (OutputStreamWriter writer = new OutputStreamWriter(out)) {
-            writer.write(string);
-            writer.close();
-        }
-    }
-
-    public static void toFile(String string, String outputFile) throws IOException {
-        try (FileOutputStream outputStream = new FileOutputStream(outputFile)) {
-            out(string, outputStream);
         }
     }
 }

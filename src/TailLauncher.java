@@ -59,19 +59,21 @@ public class TailLauncher {
         Tail tail = new Tail(characterNumber, stringNumber);
 
         try {
-            String outputText = "";
+            StringBuilder outputText = new StringBuilder();
             if (inputFiles != null) {
                 for (String inputFileName : inputFiles) {
-                    outputText = outputText.concat("File: ").concat(inputFileName).concat("\n").concat(tail.fromFile(inputFileName)).concat("\n\n");
+                    outputText = outputText.append("File: ").append(inputFileName).append("\n").append(tail.fromFile(inputFileName)).append("\n\n");
                 }
             } else {
-                outputText = tail.extractTail(System.in);
+                outputText = outputText.append(tail.extractTail(System.in));
             }
-            if (outputFile != null) {
-                Tail.toFile(outputText, outputFile);
-            } else {
-                Tail.out(outputText, System.out);
-            }
+
+            final OutputStream outputStream =
+                    (outputFile == null) ? System.out : new FileOutputStream(outputFile);
+            final OutputStreamWriter writer = new OutputStreamWriter(outputStream);
+            writer.write(outputText.toString());
+            writer.close();
+
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
