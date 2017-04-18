@@ -98,11 +98,7 @@ public class Tail {
 
     public String fromFile(String inputFile) throws IOException {
         try (FileInputStream inputStream = new FileInputStream(inputFile)) {
-            if (charNum != null) {
-                return extractCharacters(inputStream);
-            } else {
-                return extractStrings(inputStream);
-            }
+            return extractTail(inputStream);
         }
     }
 }

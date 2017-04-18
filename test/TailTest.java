@@ -45,6 +45,8 @@ public class TailTest {
     private final Tail tail1 = new Tail(10, null);
     private final Tail tail2 = new Tail(null, 10);
     private final Tail tail3 = new Tail(null, null);
+    private final Tail tail4 = new Tail(100, null);
+    private final Tail tail5 = new Tail(null, 5);
 
     private final String result1 = "момент следует считать язык Java. Java в широком\n" +
             "смысле -- не только язык, но и платформа для\n" +
@@ -56,6 +58,17 @@ public class TailTest {
             "конкретного компьютера или системы. Java также\n" +
             "включает богатейший набор библиотек для\n" +
             "разработки.";
+    private final String result2 = "конкретного компьютера или системы. Java также\r\n" +
+            "включает богатейший набор библиотек для\r\n" +
+            "разработки.";
+    private final String result3 = "In digital computers problems are solved by counting. They may be very large and powerful.\n" +
+            "All the data connected with the problem which must be solved are converted into electrical pulses\n" +
+            "by very fast electronic switches and these pulses are stored and counted.\n" +
+            "With modern electronic devices a single switching operation can take place\n" +
+            "in a few nanoseconds (a nanosecond is a thousand – millionth of a second).";
+    private final String result4 = "eration can take place\r\n" +
+            "in a few nanoseconds (a nanosecond is a thousand – millionth of a second).";
+    private final String result5 = "second).";
 
 
     @org.junit.Test
@@ -69,17 +82,9 @@ public class TailTest {
 
     @org.junit.Test
     public void fromFile() throws Exception {
-
+        assertEquals(result1, tail3.fromFile("files\\input1.txt"));
+        assertEquals(result3, tail5.fromFile("files\\input2.txt"));
+        assertEquals(result4, tail4.fromFile("files\\input2.txt"));
+        assertEquals(result2, tail4.fromFile("files\\input1.txt"));
     }
-
-    @org.junit.Test
-    public void out() throws Exception {
-
-    }
-
-    @org.junit.Test
-    public void toFile() throws Exception {
-
-    }
-
 }

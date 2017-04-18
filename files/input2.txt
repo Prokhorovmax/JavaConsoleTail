@@ -1,0 +1,15 @@
+Electronic circuits work a thousand times more rapidly than nerve cells in the human brain.
+A problem that takes the human brain 2 years in order to solve it can be solved by a computer in one minute.
+The heart of the electronic computer is its transistors.
+In order to work a computer must have instructions; this is called “programming”.
+There are two main types of electronic computers: analogue and digital.
+In analogue computers problems are solved by analogy, the problems which analogue computers can solve are the following:
+mechanical forces, speeds, rotations, etc.
+Analogue computers are used for investigation of mechanical processes, in general,
+they are used for scientific and engineering problems in which great accuracy is not required
+but answers accurate enough are required quickly.
+In digital computers problems are solved by counting. They may be very large and powerful.
+All the data connected with the problem which must be solved are converted into electrical pulses
+by very fast electronic switches and these pulses are stored and counted.
+With modern electronic devices a single switching operation can take place
+in a few nanoseconds (a nanosecond is a thousand – millionth of a second).
